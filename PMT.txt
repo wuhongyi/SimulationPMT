@@ -1,0 +1,76 @@
+##PMT.txt --- 
+##
+##Description: 
+##Author: Hongyi Wu(吴鸿毅)
+##Email: wuhongyi@qq.com 
+##Created: 六 2月 20 10:48:38 2016 (+0800)
+##Last-Updated: 二 3月 29 18:35:03 2016 (+0800)
+##          By: Hongyi Wu(吴鸿毅)
+##    Update #: 51
+##URL: http://wuhongyi.cn 
+
+
+SinglePhotonTimeRange  12   #unit:ns
+SignalTimeLeft   0   #unit:ns
+SignalTimeRight  150   #unit:ns
+
+DigitizerTimeResolution  20  #unit:ps
+#QDC积分区间为triger前时间加triger后时间
+IntegralTimePreTriger    10    #unit:ns
+IntegralTimePostTriger   30    #unit：ns
+
+####################PMT XP2020####################
+
+XP2020CathodePhotonSpectrum   11   250  300  350  400  450  500  550  600  650  700  750  #unit:nm
+XP2020FactorCollection_PMT    1    0.78
+XP2020QuantumEff_PMT          1    0.2
+
+XP2020RiseTime_PMT  1.6
+
+
+##==============单光子输出电流算法===============
+FlagOutputAlgorithm   2    #1-2002;2-2010
+
+#FlagOutputAlgorithm=1
+FactorQ2V_PMT 1.0
+CCouple_PMT 2.0e-10
+
+#FlagOutputAlgorithm=2
+XP2020TTS_FHWM       3
+
+
+##====================增益====================
+#算法：0 Const; 1 HV~G; 2 Gaussian; 3 Polya distribution.
+XP2020FlagGain   3
+XP2020GainConst  3.7e7      #FlagGain=0或2或3时必填
+
+#FlagGain=1 必填，三个参数个数得一致（HighVoltage与HVWeight类似粒子源能谱；HighVoltage与HVGain线性插值）
+XP2020HighVoltage  5   800  850  900  950  1000     #unit:V
+XP2020HVWeight     5   10   10   20   10   10 
+XP2020HVGain       5   3.5e7  3.6e7  3.7e7  3.6e7  3.5e7
+
+#FlagGain=2 必填
+XP2020GainSigma   1.0e3
+
+#FlagGain=3 必填
+XP2020GainM      100
+
+
+##===============甄别方法===============
+#LeadingEdgeDiscriminator或者ConstantFractionDiscriminator
+FlagDiscriminantAlgorithm   2   #1前沿甄别 2恒比定时甄别
+LEDThreshold     0.1      #前沿甄别阈值
+CFDThreshold     0.25     #恒比定时甄别，相对峰值的比例：[0,1]
+
+
+NOpDetail_PMT 3000.
+
+TransitTime_PMT 28.0
+NRiseTimeCut_PMT 3.
+ 
+ConstProportion_PMT 0.12
+TimeIntervalQ_PMT 100.0
+
+
+##
+##PMT.txt ends here
